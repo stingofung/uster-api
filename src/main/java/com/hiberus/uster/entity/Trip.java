@@ -13,7 +13,7 @@ public class Trip {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Long id;
-    private LocalDate tripDate;
+    private LocalDate date;
 
     private Long driverId;
     private String driverName;
@@ -26,18 +26,18 @@ public class Trip {
 //    private String vehiclePlate;
 //    private String vehicleLicense;
 
-    @OneToOne
-    @MapsId
-    private Vehicle vehicle;
+    //@OneToOne
+    //@MapsId
+    //private Vehicle vehicle;
 
     public Trip(){
 
     }
 
-    public Trip(LocalDate tripDate,
+    public Trip(LocalDate date,
             Long driverId, String driverName, String driverSurname, String driverLicense, 
             Long vehicleId, String vehicleBranch, String vehicleModel, String vehiclePlate, String vehicleLicense) {
-    	this.tripDate = tripDate;
+    	this.date = date;
         this.driverId = driverId;
         this.driverName = driverName;
         this.driverSurname = driverSurname;
@@ -54,12 +54,12 @@ public class Trip {
         this.id = id;
     }
 
-    @Column(name = "tripDate", nullable = false)
-    public LocalDate getTripDate() {
-        return tripDate;
+    @Column(name = "date", nullable = false)
+    public LocalDate getDate() {
+        return date;
     }
-    public void setTripDate(LocalDate tripDate) {
-        this.tripDate = tripDate;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     @Column(name = "driverId", nullable = false)
@@ -94,12 +94,12 @@ public class Trip {
         this.driverLicense = driverLicense;
     }
 
-    @Column(name = "vehicle")
-    public Vehicle getVehicle() {
+    //@Column(name = "vehicle")
+    /*public Vehicle getVehicle() {
         return vehicle;
-    }
+    }*/
 
-    public void setVehicle(Vehicle vehicle) {
+    /*public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
-    }
+    }*/
 }

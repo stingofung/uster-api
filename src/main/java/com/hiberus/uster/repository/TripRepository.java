@@ -8,5 +8,5 @@ import java.util.Date;
 import java.util.List;
 
 public interface TripRepository extends JpaRepository<Trip, Long> {
-    List<Trip> findAllByTripDate(final LocalDate date);
+    List<Trip> findAllByDate(final LocalDate date);
 }

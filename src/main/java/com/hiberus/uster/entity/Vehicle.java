@@ -12,25 +12,29 @@ public class Vehicle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Long id;
-    private String branch;
+    @Column(name = "brand", nullable = false)
+    private String brand;
+    @Column(name = "model", nullable = false)
     private String model;
+    @Column(name = "plate", nullable = false)
     private String plate;
+    @Column(name = "license", nullable = false)
+    @Length(min = 1, max = 1)
     private String license;
 
-    @OneToOne(mappedBy = "id", cascade = CascadeType.ALL)
-    private Trip trip;
+    //@OneToOne(mappedBy = "id", cascade = CascadeType.ALL)
+    //private Trip trip;
 
     public Vehicle(){
 
     }
 
-    public Vehicle(String branch, String model, String plate, String license) {
-        this.branch = branch;
+    public Vehicle(String brand, String model, String plate, String license) {
+        this.brand = brand;
         this.model = model;
         this.plate = plate;
         this.license = license;
     }
-
 
     public Long getId() {
         return id;
@@ -39,15 +43,13 @@ public class Vehicle {
         this.id = id;
     }
 
-    @Column(name = "branch", nullable = false)
     public String getBranch() {
-        return branch;
+        return brand;
     }
-    public void setBranch(String branch) {
-        this.branch = branch;
+    public void setBranch(String brand) {
+        this.brand = brand;
     }
 
-    @Column(name = "model", nullable = false)
     public String getModel() {
         return model;
     }
@@ -55,7 +57,6 @@ public class Vehicle {
         this.model = model;
     }
 
-    @Column(name = "plate", nullable = false)
     public String getPlate() {
         return plate;
     }
@@ -63,8 +64,6 @@ public class Vehicle {
         this.plate = plate;
     }
 
-    @Column(name = "license", nullable = false)
-    @Length(min = 1, max = 1)
     public String getLicense() {
         return license;
     }
@@ -72,11 +71,11 @@ public class Vehicle {
         this.license = license;
     }
 
-    public Trip getTrip() {
+    /*public Trip getTrip() {
         return trip;
-    }
+    }*/
 
-    public void setTrip(Trip trip) {
+    /*public void setTrip(Trip trip) {
         this.trip = trip;
-    }
+    }*/
 }

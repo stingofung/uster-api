@@ -2,7 +2,7 @@ package com.hiberus.uster.dto;
 
 public class VehicleDTO {
     private Long id;
-    private String branch;
+    private String brand;
     private String model;
     private String plate;
     private String license;
@@ -11,9 +11,9 @@ public class VehicleDTO {
 
     }
 
-    public VehicleDTO(Long id, String branch, String model, String plate, String license) {
+    public VehicleDTO(Long id, String brand, String model, String plate, String license) {
         this.id = id;
-        this.branch = branch;
+        this.brand = brand;
         this.model = model;
         this.plate = plate;
         this.license = license;
@@ -26,11 +26,11 @@ public class VehicleDTO {
         this.id = id;
     }
 
-    public String getBranch() {
-        return branch;
+    public String getBrand() {
+        return brand;
     }
-    public void setBranch(String branch) {
-        this.branch = branch;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public String getModel() {

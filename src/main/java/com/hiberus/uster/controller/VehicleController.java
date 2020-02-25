@@ -37,10 +37,10 @@ public class VehicleController {
     public VehicleDTO getVehicleById(@PathVariable(value = "id") Long id) throws ResourceNotFoundException {
         return vehicleService.findById(id);
     }
-    @GetMapping("/vehicles/filter/byDate/{date}")
+    /*@GetMapping("/vehicles/filter/byDate/{date}")
     public List<VehicleDTO> getVehiclesByDate(@PathVariable(value = "date") String date) {
     	return vehicleService.findAllByDate(date);
-    }
+    }*/
 
     @PostMapping("/vehicles/add")
     public VehicleDTO addVehicle(@Valid @RequestBody VehicleDTO vehicle) {

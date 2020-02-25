@@ -44,7 +44,7 @@ public class VehicleService {
     @Transactional
     public VehicleDTO create(VehicleDTO vehicleDTO) {
         Vehicle vehicle = new Vehicle();
-        vehicle.setBranch(vehicleDTO.getBranch());
+        vehicle.setBranch(vehicleDTO.getBrand());
         vehicle.setModel(vehicleDTO.getModel());
         vehicle.setPlate(vehicleDTO.getPlate());
         vehicle.setLicense(vehicleDTO.getLicense());
@@ -56,7 +56,7 @@ public class VehicleService {
     @Transactional
     public VehicleDTO update(Long id, VehicleDTO vehicleDTO) {
         Vehicle vehicle = findOneSafe(id);
-        vehicle.setBranch(vehicleDTO.getBranch());
+        vehicle.setBranch(vehicleDTO.getBrand());
         vehicle.setModel(vehicleDTO.getModel());
         vehicle.setPlate(vehicleDTO.getPlate());
         vehicle.setLicense(vehicleDTO.getLicense());
@@ -76,13 +76,13 @@ public class VehicleService {
     }
 
 	public List<VehicleDTO> findAllByDate(String date) {
-        final LocalDate objDate = LocalDate.parse(date,formatter);
+        /*final LocalDate objDate = LocalDate.parse(date,formatter);
 
         final List<Vehicle> availableVehicles = vehicleRepository.findAllByTripTripDateIsNot(objDate);
         return availableVehicles.stream()
                 .map(entity -> new VehicleDTO(entity.getId(), entity.getBranch(), entity.getModel(), entity.getPlate(), entity.getLicense()))
-                .collect(Collectors.toList());
-
+                .collect(Collectors.toList());*/
+return null;
 
         //vehicleRepository.findAllByDate(objDate);
 		

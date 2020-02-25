@@ -11,8 +11,8 @@ public class TripDTO {
 	
     private Long id;
     @JsonFormat(pattern = "yyyy-MM-dd")
-    @JsonProperty("tripDate")
-    private LocalDate tripDate;
+    @JsonProperty("date")
+    private LocalDate date;
 
     private Long driverId;
     private String driverName;
@@ -29,20 +29,23 @@ public class TripDTO {
 
     }
 
-    public TripDTO(Long id, LocalDate tripDate,
+    /*public TripDTO(Long id, LocalDate date,
                    Long driverId, String driverName, String driverSurname, String driverLicense,
-                   Vehicle vehicle) {
+                   Vehicle vehicle) {*/
+
+    public TripDTO(Long id, LocalDate date,
+                Long driverId, String driverName, String driverSurname, String driverLicense) {
         this.id = id;
-        this.tripDate = tripDate;
+        this.date = date;
         this.driverId = driverId;
         this.driverName = driverName;
         this.driverSurname = driverSurname;
         this.driverLicense = driverLicense;
-        this.vehicleId = vehicle.getId();
+        /*this.vehicleId = vehicle.getId();
         this.vehicleBranch = vehicle.getBranch();
         this.vehicleModel = vehicle.getModel();
         this.vehiclePlate = vehicle.getPlate();
-        this.vehicleLicense = vehicle.getLicense();
+        this.vehicleLicense = vehicle.getLicense();*/
     }
 
     public Long getId() {
@@ -52,11 +55,11 @@ public class TripDTO {
         this.id = id;
     }
 
-    public LocalDate getTripDate() {
-        return tripDate;
+    public LocalDate getDate() {
+        return date;
     }
-    public void setTripDate(LocalDate tripDate) {
-        this.tripDate = tripDate;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public Long getDriverId() {

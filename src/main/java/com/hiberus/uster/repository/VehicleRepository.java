@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
      List<Vehicle> findAllByIdNotIn(final List<Long> ids);
-     List<Vehicle> findAllByTripTripDateIsNot(LocalDate localDate);
+     /*List<Vehicle> findAllByTripTripDateIsNot(LocalDate localDate);*/
 }

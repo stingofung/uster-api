@@ -19,24 +19,31 @@ public class TripService {
     private TripRepository tripRepository;
 
     public List<TripDTO> findAll() {
-        return tripRepository.findAll().stream()
-                .map(entity -> new TripDTO(entity.getId(), entity.getTripDate(), 
-                		entity.getDriverId(), entity.getDriverName(), entity.getDriverSurname(), entity.getDriverLicense(), 
+        /*return tripRepository.findAll().stream()
+                .map(entity -> new TripDTO(entity.getId(), entity.getDate(), 
+                		entity.getDriverId(), entity.getDriverName(), entity.getDriverSurname(), entity.getDriverLicense(),
                 		entity.getVehicle()))
+                .collect(Collectors.toList());*/
+
+        return tripRepository.findAll().stream()
+                .map(entity -> new TripDTO(entity.getId(), entity.getDate(),
+                        entity.getDriverId(), entity.getDriverName(), entity.getDriverSurname(), entity.getDriverLicense()))
                 .collect(Collectors.toList());
     }
 
     public TripDTO findById(Long id) {
         Trip trip = findOneSafe(id);
-        return new TripDTO(trip.getId(), trip.getTripDate(), 
+        /*return new TripDTO(trip.getId(), trip.getDate(),
         		trip.getDriverId(), trip.getDriverName(), trip.getDriverSurname(), trip.getDriverLicense(),
-                trip.getVehicle());
+                trip.getVehicle());*/
+        return new TripDTO(trip.getId(), trip.getDate(),
+                trip.getDriverId(), trip.getDriverName(), trip.getDriverSurname(), trip.getDriverLicense());
     }
 
     @Transactional
     public TripDTO create(TripDTO tripDTO) {
         Trip trip = new Trip();
-        trip.setTripDate(tripDTO.getTripDate());
+        trip.setDate(tripDTO.getDate());
         trip.setDriverId(tripDTO.getDriverId());
         trip.setDriverName(tripDTO.getDriverName());
         trip.setDriverSurname(tripDTO.getDriverSurname());
@@ -49,15 +56,18 @@ public class TripService {
         vehicle.setLicense(tripDTO.getVehicleLicense());
 
         Trip savedTrip = tripRepository.saveAndFlush(trip);
-        return new TripDTO(savedTrip.getId(), savedTrip.getTripDate(), 
+        /*return new TripDTO(savedTrip.getId(), savedTrip.getDate(),
         		savedTrip.getDriverId(), savedTrip.getDriverName(), savedTrip.getDriverSurname(), savedTrip.getDriverLicense(),
-        		vehicle);
+        		vehicle);*/
+
+        return new TripDTO(savedTrip.getId(), savedTrip.getDate(),
+                savedTrip.getDriverId(), savedTrip.getDriverName(), savedTrip.getDriverSurname(), savedTrip.getDriverLicense());
     }
 
     @Transactional
     public TripDTO update(Long id, TripDTO tripDTO) {
         Trip trip = findOneSafe(id);
-        trip.setTripDate(tripDTO.getTripDate());
+        trip.setDate(tripDTO.getDate());
         trip.setDriverId(tripDTO.getDriverId());
         trip.setDriverName(tripDTO.getDriverName());
         trip.setDriverSurname(tripDTO.getDriverSurname());
@@ -69,9 +79,12 @@ public class TripService {
         vehicle.setModel(tripDTO.getVehicleModel());
         vehicle.setPlate(tripDTO.getVehiclePlate());
         vehicle.setLicense(tripDTO.getVehicleLicense());
-        return new TripDTO(trip.getId(), trip.getTripDate(), 
+        /*return new TripDTO(trip.getId(), trip.getDate(),
         		trip.getDriverId(), trip.getDriverName(), trip.getDriverSurname(), trip.getDriverLicense(),
-        		vehicle);
+        		vehicle);*/
+
+        return new TripDTO(trip.getId(), trip.getDate(),
+                trip.getDriverId(), trip.getDriverName(), trip.getDriverSurname(), trip.getDriverLicense());
     }
 
     @Transactional

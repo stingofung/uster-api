@@ -10,14 +10,19 @@ import javax.persistence.*;
 public class Trip {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
     private Long id;
+    @Column(name = "date", nullable = false)
     private LocalDate date;
 
+    @Column(name = "driverId", nullable = false)
     private Long driverId;
+    @Column(name = "driverName", nullable = false)
     private String driverName;
+    @Column(name = "driverSurname", nullable = false)
     private String driverSurname;
+    @Column(name = "driverLicense", nullable = false)
     private String driverLicense;
 
 //    private Long vehicleId;
@@ -44,9 +49,6 @@ public class Trip {
         this.driverLicense = driverLicense;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
     public Long getId() {
         return id;
     }
@@ -54,7 +56,6 @@ public class Trip {
         this.id = id;
     }
 
-    @Column(name = "date", nullable = false)
     public LocalDate getDate() {
         return date;
     }
@@ -62,7 +63,6 @@ public class Trip {
         this.date = date;
     }
 
-    @Column(name = "driverId", nullable = false)
     public Long getDriverId() {
         return driverId;
     }
@@ -70,7 +70,6 @@ public class Trip {
         this.driverId = driverId;
     }
 
-    @Column(name = "driverName", nullable = false)
     public String getDriverName() {
         return driverName;
     }
@@ -78,7 +77,6 @@ public class Trip {
         this.driverName = driverName;
     }
 
-    @Column(name = "driverSurname", nullable = false)
     public String getDriverSurname() {
         return driverSurname;
     }
@@ -86,7 +84,6 @@ public class Trip {
         this.driverSurname = driverSurname;
     }
 
-    @Column(name = "driverLicense", nullable = false)
     public String getDriverLicense() {
         return driverLicense;
     }

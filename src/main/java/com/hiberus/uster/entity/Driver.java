@@ -13,9 +13,16 @@ import javax.persistence.Table;
 @Table(name = "drivers")
 public class Driver {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private Long id;
+    @Column(name = "name", nullable = false)
     private String name;
+    @Column(name = "surName", nullable = false)
     private String surName;
+    @Column(name = "license", nullable = false)
+    @Length(min = 1, max = 1)
     private String license;
 
     public Driver(){
@@ -28,9 +35,6 @@ public class Driver {
         this.license = license;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
     public Long getId() {
         return id;
     }
@@ -38,7 +42,6 @@ public class Driver {
         this.id = id;
     }
 
-    @Column(name = "name", nullable = false)
     public String getName() {
         return name;
     }
@@ -46,7 +49,6 @@ public class Driver {
         this.name = name;
     }
 
-    @Column(name = "surName", nullable = false)
     public String getSurName() {
         return surName;
     }
@@ -54,8 +56,6 @@ public class Driver {
         this.surName = surName;
     }
 
-    @Column(name = "license", nullable = false)
-    @Length(min = 1, max = 1)
     public String getLicense() {
         return license;
     }

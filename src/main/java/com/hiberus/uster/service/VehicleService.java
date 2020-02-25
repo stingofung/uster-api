@@ -2,6 +2,7 @@ package com.hiberus.uster.service;
 
 
 import com.hiberus.uster.dto.VehicleDTO;
+import com.hiberus.uster.entity.Trip;
 import com.hiberus.uster.entity.Vehicle;
 import com.hiberus.uster.exception.VehicleNotFoundException;
 import com.hiberus.uster.repository.TripRepository;
@@ -70,19 +71,20 @@ public class VehicleService {
     }
 
     private Vehicle findOneSafe(Long id) {
-        //return vehicleRepository.findById(id).orElse(new Vehicle()); //25885257-5; 74289223; mariangelica.movistar26@gmail.com
+        //return vehicleRepository.findById(id).orElse(new Vehicle());
         return vehicleRepository.findById(id)
                 .orElseThrow(() -> new VehicleNotFoundException());
     }
 
 	public List<VehicleDTO> findAllByDate(String date) {
-        /*final LocalDate objDate = LocalDate.parse(date,formatter);
-
-        final List<Vehicle> availableVehicles = vehicleRepository.findAllByTripTripDateIsNot(objDate);
+        LocalDate objDate = LocalDate.parse(date, formatter);
+        objDate = objDate;
+return null;
+        /*final List<Vehicle> availableVehicles = vehicleRepository.findAllByTripTripDateIsNot(objDate);
         return availableVehicles.stream()
                 .map(entity -> new VehicleDTO(entity.getId(), entity.getBranch(), entity.getModel(), entity.getPlate(), entity.getLicense()))
                 .collect(Collectors.toList());*/
-return null;
+
 
         //vehicleRepository.findAllByDate(objDate);
 		

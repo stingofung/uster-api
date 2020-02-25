@@ -2,7 +2,6 @@ package com.hiberus.uster.service;
 
 
 import com.hiberus.uster.dto.VehicleDTO;
-import com.hiberus.uster.entity.Trip;
 import com.hiberus.uster.entity.Vehicle;
 import com.hiberus.uster.exception.VehicleNotFoundException;
 import com.hiberus.uster.repository.TripRepository;
@@ -77,11 +76,9 @@ public class VehicleService {
     }
 
 	public List<VehicleDTO> findAllByDate(String date) {
-		// TODO Auto-generated method stub
         final LocalDate objDate = LocalDate.parse(date,formatter);
-        List<Trip> tripList = tripRepository.findAllByTripDate(objDate);
-        final List<Long> usedVehicles = tripList.stream().map(Trip::getVehicleId).collect(Collectors.toList());
-        final List<Vehicle> availableVehicles = vehicleRepository.findAllByIdNotIn(usedVehicles.isEmpty()? Collections.singletonList(0L) :usedVehicles);
+
+        final List<Vehicle> availableVehicles = vehicleRepository.findAllByTripTripDateIsNot(objDate);
         return availableVehicles.stream()
                 .map(entity -> new VehicleDTO(entity.getId(), entity.getBranch(), entity.getModel(), entity.getPlate(), entity.getLicense()))
                 .collect(Collectors.toList());

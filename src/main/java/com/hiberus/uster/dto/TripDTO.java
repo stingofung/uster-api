@@ -5,6 +5,7 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.hiberus.uster.entity.Vehicle;
 
 public class TripDTO {
 	
@@ -29,19 +30,19 @@ public class TripDTO {
     }
 
     public TripDTO(Long id, LocalDate tripDate,
-        Long driverId, String driverName, String driverSurname, String driverLicense, 
-        Long vehicleId, String vehicleBranch, String vehicleModel, String vehiclePlate, String vehicleLicense) {
+                   Long driverId, String driverName, String driverSurname, String driverLicense,
+                   Vehicle vehicle) {
         this.id = id;
         this.tripDate = tripDate;
         this.driverId = driverId;
         this.driverName = driverName;
         this.driverSurname = driverSurname;
         this.driverLicense = driverLicense;
-        this.vehicleId = vehicleId;
-        this.vehicleBranch = vehicleBranch;
-        this.vehicleModel = vehicleModel;
-        this.vehiclePlate = vehiclePlate;
-        this.vehicleLicense = vehicleLicense;
+        this.vehicleId = vehicle.getId();
+        this.vehicleBranch = vehicle.getBranch();
+        this.vehicleModel = vehicle.getModel();
+        this.vehiclePlate = vehicle.getPlate();
+        this.vehicleLicense = vehicle.getLicense();
     }
 
     public Long getId() {

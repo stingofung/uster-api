@@ -2,22 +2,23 @@ package com.hiberus.uster.entity;
 
 import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "vehicles")
 public class Vehicle {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private Long id;
     private String branch;
     private String model;
     private String plate;
     private String license;
+
+    @OneToOne(mappedBy = "id", cascade = CascadeType.ALL)
+    private Trip trip;
 
     public Vehicle(){
 
@@ -30,9 +31,7 @@ public class Vehicle {
         this.license = license;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+
     public Long getId() {
         return id;
     }
@@ -71,5 +70,13 @@ public class Vehicle {
     }
     public void setLicense(String license) {
         this.license = license;
+    }
+
+    public Trip getTrip() {
+        return trip;
+    }
+
+    public void setTrip(Trip trip) {
+        this.trip = trip;
     }
 }

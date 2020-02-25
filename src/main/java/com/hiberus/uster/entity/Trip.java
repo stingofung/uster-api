@@ -20,15 +20,15 @@ public class Trip {
     private String driverSurname;
     private String driverLicense;
 
-    private Long vehicleId;
-    private String vehicleBranch;
-    private String vehicleModel;
-    private String vehiclePlate;
-    private String vehicleLicense;
+//    private Long vehicleId;
+//    private String vehicleBranch;
+//    private String vehicleModel;
+//    private String vehiclePlate;
+//    private String vehicleLicense;
 
-//    @ManyToOne
-//    @JoinColumn("vehicle_id")
-//    private Vehicle vehicle;
+    @OneToOne
+    @MapsId
+    private Vehicle vehicle;
 
     public Trip(){
 
@@ -42,11 +42,6 @@ public class Trip {
         this.driverName = driverName;
         this.driverSurname = driverSurname;
         this.driverLicense = driverLicense;
-        this.vehicleId = vehicleId;
-        this.vehicleBranch = vehicleBranch;
-        this.vehicleModel = vehicleModel;
-        this.vehiclePlate = vehiclePlate;
-        this.vehicleLicense = vehicleLicense;
     }
 
     @Id
@@ -99,43 +94,12 @@ public class Trip {
         this.driverLicense = driverLicense;
     }
 
-    @Column(name = "vehicleId", nullable = false)
-    public Long getVehicleId() {
-        return vehicleId;
-    }
-    public void setVehicleId(Long vehicleId) {
-        this.vehicleId = vehicleId;
+    @Column(name = "vehicle")
+    public Vehicle getVehicle() {
+        return vehicle;
     }
 
-    @Column(name = "vehicleBranch", nullable = false)
-    public String getVehicleBranch() {
-        return vehicleBranch;
-    }
-    public void setVehicleBranch(String vehicleBranch) {
-        this.vehicleBranch = vehicleBranch;
-    }
-
-    @Column(name = "vehicleModel", nullable = false)
-    public String getVehicleModel() {
-        return vehicleModel;
-    }
-    public void setVehicleModel(String vehicleModel) {
-        this.vehicleModel = vehicleModel;
-    }
-
-    @Column(name = "vehiclePlate", nullable = false)
-    public String getVehiclePlate() {
-        return vehiclePlate;
-    }
-    public void setVehiclePlate(String vehiclePlate) {
-        this.vehiclePlate = vehiclePlate;
-    }
-
-    @Column(name = "vehicleLicense", nullable = false)
-    public String getVehicleLicense() {
-        return vehicleLicense;
-    }
-    public void setVehicleLicense(String vehicleLicense) {
-        this.vehicleLicense = vehicleLicense;
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 }
